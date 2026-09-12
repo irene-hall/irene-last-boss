@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>今日のラスボス診断</title>
+    <meta
+      name="description"
+      content="5つの質問で、今日のあなたのラスボスタイプを診断する小さなエンタメアプリ。"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23100f19'/%3E%3Cpath d='M15 45h34L43 20l-8 12-4-17-5 17-7-12z' fill='%23f4c95d'/%3E%3Ccircle cx='24' cy='43' r='3' fill='%23100f19'/%3E%3Ccircle cx='40' cy='43' r='3' fill='%23100f19'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="intro" aria-labelledby="app-title">
+        <p class="eyebrow">Daily Final Boss Check</p>
+        <h1 id="app-title">今日のラスボス診断</h1>
+        <p class="lead">
+          5つ選ぶだけ。今日のあなたに潜むラスボス名が、こっそり発表されます。
+        </p>
+      </section>
+
+      <form id="quizForm" class="quiz-card">
+        <div class="progress-wrap" aria-hidden="true">
+          <span id="progressText">0 / 5</span>
+          <div class="progress-bar">
+            <span id="progressFill"></span>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>Q1. 今日の起動音は？</legend>
+          <label><input type="radio" name="q1" value="shadow" /> ため息</label>
+          <label><input type="radio" name="q1" value="sleep" /> 無音</label>
+          <label><input type="radio" name="q1" value="spark" /> なぜか戦闘BGM</label>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Q2. いま一番ほしいものは？</legend>
+          <label><input type="radio" name="q2" value="sleep" /> 休息</label>
+          <label><input type="radio" name="q2" value="spark" /> 勢い</label>
+          <label><input type="radio" name="q2" value="shadow" /> 静かな時間</label>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Q3. 敵に回したくないものは？</legend>
+          <label><input type="radio" name="q3" value="shadow" /> 月曜</label>
+          <label><input type="radio" name="q3" value="spark" /> 締切</label>
+          <label><input type="radio" name="q3" value="sleep" /> 低気圧</label>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Q4. あなたの戦い方は？</legend>
+          <label><input type="radio" name="q4" value="shadow" /> 静かに圧をかける</label>
+          <label><input type="radio" name="q4" value="spark" /> 勢いで押す</label>
+          <label><input type="radio" name="q4" value="sleep" /> いったん寝かせる</label>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Q5. 最後に言いそうなセリフは？</legend>
+          <label><input type="radio" name="q5" value="sleep" /> 世界、あと5分だけ待て</label>
+          <label><input type="radio" name="q5" value="shadow" /> その通知、見なかったことにする</label>
+          <label><input type="radio" name="q5" value="spark" /> ここからが本番だ</label>
+        </fieldset>
+
+        <p id="errorText" class="error-text" role="alert"></p>
+
+        <div class="actions">
+          <button class="primary-button" type="submit">診断する</button>
+          <button id="resetButton" class="ghost-button" type="button">やり直す</button>
+        </div>
+      </form>
+
+      <section id="resultCard" class="result-card is-hidden" aria-live="polite">
+        <p class="result-label">診断結果</p>
+        <h2 id="bossName"></h2>
+        <p id="bossSummary" class="summary"></p>
+        <dl class="boss-details">
+          <div>
+            <dt>必殺技</dt>
+            <dd id="specialMove"></dd>
+          </div>
+          <div>
+            <dt>弱点</dt>
+            <dd id="weakness"></dd>
+          </div>
+          <div>
+            <dt>居城</dt>
+            <dd id="castle"></dd>
+          </div>
+          <div>
+            <dt>部下</dt>
+            <dd id="minion"></dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
